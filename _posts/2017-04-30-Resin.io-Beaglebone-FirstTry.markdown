@@ -1,0 +1,40 @@
+---
+layout: post
+title:  "resin.io , first try !"
+categories: post 
+---
+  
+I needed to learn about continuous delivery.  I found resin.io and a couple things about it made me try it immediately.  
+1, it supports beaglebone, and it supports other stuff too.  
+2, the architectural drawing made sense and I was planning to go in a similar direction anyway.  
+  
+Making an account was super fast.  Getting an OS image to download was also super fast.  
+  
+First thing I don't like:  you have to flash the Beaglebone's internal (on-board) flash memory with the image.  You can't run the image off the SD card.  It didn't work when I tried it.  I just don't like the idea that I have to flash an on-board flash memory with an OS that I literally just learned of its existence.  I like having the stock Beaglebone OS on there so I can do rescue.  This is a known issue and the issue is NOT there for other devices eg. raspberry pi.
+  
+SSH keys.  I like the interface, very simple.  I use SSH keys for other things so I made a new set of keys in some directory.  I had to edit the file ~/.ssh/config to tell ssh client to use the keys in some directory, when some host is being contacted.  
+I had never done this before so 1 thing tripped me up:  
+**the IdentityFile is as shown.  do not put the .pub extension after it**
+
+{% highlight c%}
+Host git.resin.io
+    HostName git.resin.io
+    User myuser 
+    IdentityFile /path/to/resin_id_rsa
+
+{% endhighlight %}
+  
+Got that working, and was able to git push resin master.  
+Immediately, I saw on the resin.io dashboard that my beaglebone was starting to download the new code that was pushed up.  Cool!  
+  
+I then pointed my browser at port 80 of the beaglebone's IP address.  I got "Hello World!".  Awesome!  
+Next, the obvious thought that I had was:  I want to do the same thing again and host Hello World on port 81 instead of 80.  I imagined being able to swap in and out servers listening on different ports on the fly, and have some beaglebones with some types of servers and others with different combinations of server types.  
+  
+**Well, you can't!**  
+  
+As far as I understand (almost nothing) the concept of "Application" in Resin.io encompasses all the devices.  You can't have a single beaglebone running 2 different applications.  A beaglebone is bound to a single application.  A single application is bound to a single git repository and a single docker file.
+
+[jekyll-docs]: https://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/
+[wiki-apage]:  /wiki/todo
