@@ -3,6 +3,7 @@ layout: affiliates-page
 title: About
 comments: true
 ---
+# Awesome, my new Netlify pipeline is good to go!
 
     Just an un-edited documentation of technical tips.  
 
