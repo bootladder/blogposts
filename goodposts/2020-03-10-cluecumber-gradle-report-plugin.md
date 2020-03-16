@@ -49,7 +49,7 @@ buildscript {
 repositories {
 
     maven {
-        url 'https://artifactory.ACME.com/artifactory/automated-testing'
+        url 'https://artifactory.ACME.com/artifactory/awesome-repo-name'
     }
     maven {
      url 'https://artifactory.ACME.com/artifactory/jcenter-cache'
