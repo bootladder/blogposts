@@ -5,11 +5,12 @@ comments: true
 ---
     Hello, my name is Steve Anderson.  I am an engineer dedicated to excellence in embedded systems.  
     Specifically in AUTOMATED TESTING!  
+
   
     In the 21st century world of embedded systems, requirements change faster than ever.
     Only those products which can adapt, literally to changing interfaces, will survive.  
     The changes are happening latest when the risk is greatest, and the risk mitigator is automated testing.
-
+  
     
     I am currently looking for projects.
     I am interested in working with you!  
@@ -41,4 +42,4 @@ I also provide embedded systems and software development services.  Feel free to
   
   
 
-# Please feel free to reach out at (my first name) at (this website's domain)
+# Let's have a chat:  <steve@bootladder.com>
