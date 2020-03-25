@@ -2,6 +2,7 @@
 layout: post
 title: 'CoreOS: Trying it out'
 date: 2019-08-24 15:25 -0400
+Status: draft
 ---
 
 Installing Docker on a fresh server gets old.  Perhaps CoreOS can work out of the box?
