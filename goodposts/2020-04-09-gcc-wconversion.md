@@ -10,8 +10,7 @@ categories:
 # -Wall and -Wextra are actually not, all and extra.
   
 It started in this test
-```
-:::c++
+```c++
 TEST(LFO, handlesMIDIMessages) {
     LFO lfo("name");
 
