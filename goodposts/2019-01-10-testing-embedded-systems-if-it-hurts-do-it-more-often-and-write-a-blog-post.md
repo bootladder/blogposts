@@ -1,7 +1,11 @@
 ---
 layout: post
-title: 'Testing Embedded Systems:  If it hurts, do it more often.  (and write a blog
-  post)'
+title: 'Testing Embedded Systems:  If it hurts, do it more often (and write about it)'
+date: 2019-01-10
+summary: Sometimes writing the code is the shortest and easiest part of the project
+categories:
+  - Embedded
+  - C/C++
 ---
 # "If it hurts, do it more often" -- XP
 

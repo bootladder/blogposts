@@ -1,6 +1,13 @@
 ---
 layout: post
 title: Verify 2 Build Systems Build the Same Target
+date: 2018-12-27
+summary: It works on my machine!  But is it exactly the same?
+categories:
+  - C/C++
+  - Embedded
+  - "Ops"
+
 ---
 I had a verbose explicit Makefile and ported it to a CMake build.  
 After getting past the compile and link errors I saw the output

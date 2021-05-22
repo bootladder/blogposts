@@ -1,6 +1,11 @@
 ---
 layout: post
 title: Growing and Maintaining Legacy Code
+summary: Don't go bushwhacking the code, do it surgically.
+date: 2018-12-29
+categories:
+    - Embedded
+    - C/C++
 ---
 I'm ready to start cleaning up my code and adding new features.
 I want to remove all compiler warnings, comments, cruft,

@@ -1,6 +1,11 @@
 ---
 layout: post
 title: 'Testing: Asserting Compiler Defines'
+date: 2019-01-03
+summary: Tests are good, but can you test for compiler defines being present?
+categories:
+  - Embedded
+  - C/C++
 ---
 # Testing: Asserting Compiler Defines
 I ported a build from make to CMake, I nearly missed a piece though just before shipping.  

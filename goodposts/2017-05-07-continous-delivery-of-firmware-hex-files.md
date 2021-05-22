@@ -1,6 +1,11 @@
 ---
 layout: post
-title: continous-delivery-of-firmware-hex-files
+title: Continuous Delivery of Firmware Binaries
+date: 2017-05-07
+summary: In the real world you don't generate 1 binary.
+  There are product variants, configuration variants,
+  debug and release builds, test variants.
+  Don't edit source and recompile!  Just generate all of them at once.
 categories:
   - "Ops"
   - "Embedded"

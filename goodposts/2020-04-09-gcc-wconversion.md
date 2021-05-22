@@ -1,6 +1,11 @@
 ---
 layout: post
 title: "GCC -Wconversion: Warnings Everywhere!"
+date: 2020-04-09
+summary: -Wall and -Wextra are actually not, all and extra.  Check out -Wconversion
+categories:
+  - "C/C++"
+  - "Embedded"
 ---
 # -Wall and -Wextra are actually not, all and extra.
   

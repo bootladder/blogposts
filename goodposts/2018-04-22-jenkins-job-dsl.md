@@ -1,6 +1,9 @@
 ---
 layout: post
 title: 'Jenkins: Job DSL'
+date: 2018-04-22
+categories:
+  - "Ops"
 ---
 I don't know if it's my low-end VPS, java, or what, but Jenkins is **slow**.  
 To create a new job, edit a job, really just about everything is slow.  

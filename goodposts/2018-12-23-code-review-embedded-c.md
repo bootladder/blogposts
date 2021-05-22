@@ -1,6 +1,11 @@
 ---
 layout: post
 title: 'Code Review: Embedded C'
+summary: Things I look for in crap code ie. my old code :p
+date: 2018-12-23
+categories:
+  - C/C++
+  - "Ops"
 ---
 I learned a lot at this last job I had.  So much,
 I realized the code from my last job sucks.  

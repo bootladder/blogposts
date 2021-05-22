@@ -1,6 +1,11 @@
 ---
 layout: post
 title: 'Reference:  OpenOCD, GDB'
+date: 2018-04-18
+summary: Cheatsheet/notes about OpenOCD and GDB
+categories:
+  - "Ops"
+  - "Embedded"
 ---
 
 <link rel="stylesheet" href="https://2ab9pu2w8o9xpg6w26xnz04d-wpengine.netdna-ssl.com/wp-content/cache/autoptimize/css/autoptimize_f0ba07fcfbfb99eca6dd6305271724f8.css"/>

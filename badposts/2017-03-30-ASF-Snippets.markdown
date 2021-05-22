@@ -1,6 +1,8 @@
 ---
 layout: post
 title:  "ASF Snippets that only depend on CMSIS"
+description: "IS this the description?"
+summary: "is summary??"
 categories:
   - "C/C++"
   - "Embedded"

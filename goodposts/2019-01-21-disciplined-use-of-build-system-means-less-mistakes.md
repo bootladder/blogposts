@@ -1,6 +1,11 @@
 ---
 layout: post
 title: Disciplined Use of Build System Means Less Mistakes
+date: 2019-01-21
+summary: How sophisticated is your build system?  Some ideas to compare.
+categories:
+    - Embedded
+    - C/C++
 ---
 # Disciplined Use of Build System Means Less Mistakes
 The following scenario is a problem and it needs to be eliminated:  

@@ -1,6 +1,11 @@
 ---
 layout: post
 title: Cluecumber Gradle Report Plugin
+date: 2020-03-10
+summary: Corporate Firewall got you down?  Can't get your artifacts?
+categories:
+    - Ops
+    - Testing
 ---
 # Host your own Cluecumber Gradle Plugin to workaround Corporate Firewall
 I'm using cucumber at work and I use the JUnit runner and gradle.

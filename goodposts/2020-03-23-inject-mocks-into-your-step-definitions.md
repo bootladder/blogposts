@@ -1,6 +1,11 @@
 ---
 layout: post
 title: Inject Mocks into your Cucumber Step Definitions
+date: 2020-03-23
+summary: Yo dawg, I heard you like injecting mocks.
+categories:
+    - Testing
+    - Ops
 ---
 # Use mockito and picocontainer to mock stuff like network interfaces
   
