@@ -2,6 +2,10 @@
 layout: affiliates-page
 title: About
 comments: true
+menu:
+  main:
+    name: About
+    weight: 10
 ---
     Hello, my name is Steve Anderson.  I am an engineer dedicated to excellence in embedded systems.  
     Specifically in AUTOMATED TESTING!  
