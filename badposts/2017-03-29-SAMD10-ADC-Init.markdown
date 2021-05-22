@@ -1,7 +1,9 @@
 ---
 layout: post
 title:  "SAMD10 ADC Init, via direct register access"
-categories: guide
+categories:
+  - "C/C++"
+  - "Embedded"
 ---
 
 First: how to brick your device.  

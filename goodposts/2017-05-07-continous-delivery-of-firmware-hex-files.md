@@ -1,7 +1,9 @@
 ---
 layout: post
 title: continous-delivery-of-firmware-hex-files
-categories: guide
+categories:
+  - "Ops"
+  - "Embedded"
 ---
   
 I had a short, one-off project based on a code base in production.  

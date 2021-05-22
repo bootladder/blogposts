@@ -1,7 +1,8 @@
 ---
 layout: post
 title:  "OpenVPN: What I need to know"
-categories: guide
+categories:
+  - "Ops"
 ---
 
 Remember:  

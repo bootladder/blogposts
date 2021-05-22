@@ -1,7 +1,9 @@
 ---
 layout: post
 title:  "ASF Snippets that only depend on CMSIS"
-categories: guide
+categories:
+  - "C/C++"
+  - "Embedded"
 ---
 
 I've always had problems getting ASF dependent crap to compile.  But the code works so I have to go to it

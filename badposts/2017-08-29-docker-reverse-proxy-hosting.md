@@ -1,7 +1,8 @@
 ---
 layout: post
 title: Hosting on docker behind a reverse proxy
-categories: guide
+categories:
+  - "Ops"
 ---
 
 Needed to redo my personal infrastructure.  My infrastructure at work absolutely needs work

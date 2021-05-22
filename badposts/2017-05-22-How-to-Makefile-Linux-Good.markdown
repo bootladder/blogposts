@@ -2,7 +2,8 @@
 layout: post
 title:  "How to make Linux Makefiles Work Good"
 author: Steven Anderson
-categories: post 
+categories:
+  - "C/C++"
 ---
   
 I'm going to describe what I do for my current project.  I'm porting over my 5th project to this system so I gotta write it down haha.  

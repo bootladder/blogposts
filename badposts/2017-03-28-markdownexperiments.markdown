@@ -2,7 +2,8 @@
 layout: post
 title:  "Markdown Snippets"
 date:   2017-03-28 13:51:03 -0700
-categories: guide
+categories:
+  - "Notes"
 ---
   
 https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet

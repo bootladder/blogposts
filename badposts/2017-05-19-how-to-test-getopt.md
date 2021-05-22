@@ -1,7 +1,9 @@
 ---
 layout: post
 title: How to test getopt
-categories: guide
+categories:
+  - "C/C++"
+  - "Testing"
 ---
   
 I have a function with associated unit tests, called Parse_Bootloader_Commandline().

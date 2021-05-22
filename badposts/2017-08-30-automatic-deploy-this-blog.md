@@ -1,7 +1,8 @@
 ---
 layout: post
 title: Deploy blog updates automatically with git push
-categories: guide
+categories:
+  - "Ops"
 ---
 
 After I had the docker shared volume + git solution working (see other post),

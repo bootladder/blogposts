@@ -1,6 +1,6 @@
 ---
 layout: post
-title: GCC -Wconversion: Warnings Everywhere!
+title: "GCC -Wconversion: Warnings Everywhere!"
 ---
 # -Wall and -Wextra are actually not, all and extra.
   

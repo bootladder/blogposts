@@ -1,6 +1,6 @@
 ---
 layout: post
-title: STM32F769 Discovery: Trying it Bottom Up
+title: "STM32F769 Discovery: Trying it Bottom Up"
 ---
 After discovering 1. There's a whole set of Application/ and Example/ projects for the
 discovery kit, and 2. The Demonstration/ application does too many things so it's confusing...  

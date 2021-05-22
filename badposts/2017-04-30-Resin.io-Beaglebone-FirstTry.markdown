@@ -1,7 +1,8 @@
 ---
 layout: post
 title:  "resin.io , first try !"
-categories: post 
+categories:
+  - "Ops"
 ---
   
 I needed to learn about continuous delivery.  I found resin.io and a couple things about it made me try it immediately.  

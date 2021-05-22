@@ -1,6 +1,6 @@
 ---
 layout: affiliates-page
-title: Case Studies: Excel
+title: "Case Studies: Excel"
 comments: true
 ---
 ### Excel Automation

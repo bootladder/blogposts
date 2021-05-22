@@ -1,7 +1,9 @@
 ---
 layout: post
 title:  "SAMD10 ADC Init, Complete!"
-categories: guide
+categories:
+  - "C/C++"
+  - "Embedded"
 ---
 
 After configuring the GCLK generator and GCLK_ADC, I knew that was done properly because I could
