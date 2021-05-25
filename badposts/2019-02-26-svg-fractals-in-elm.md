@@ -5,7 +5,7 @@ title: SVG Fractals in Elm
 <p>Using Elm, Ports, SVG to create interactive widgets.</p>
 <p>
     <div id="elm-place">    </div>
-    <script src="/assets/elmapp.js"></script>
+    <script src="/script/elmapp.js"></script>
     <script>
      var app = Elm.Main.init({
        node: document.getElementById('elm-place')
