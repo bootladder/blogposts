@@ -7,14 +7,14 @@ categories:
   - "C/C++"
   - "Embedded"
 ---
-# -Wall and -Wextra are actually not, all and extra.
+## -Wall and -Wextra are actually not, all and extra.
   
 It started in this test
 ```c++
 TEST(LFO, handlesMIDIMessages) {
     LFO lfo("name");
 
-    int f = lfo.getLFOFrequency();
+    int f = lfo.getLFOFrequency(); // <-  this returns a float
 
     // changes the frequency to some value
     lfo.setMIDIParameter(PARAM_0, 30);
@@ -22,19 +22,22 @@ TEST(LFO, handlesMIDIMessages) {
     ASSERT_NE(f, lfo.getLFOFrequency());
 }
 ```
-
-See `int f` there.  I had just changed `getLFOFrequency()` to return a float.  But why did I not get a warning for assigning float to int?  
+  
+See `int f` there.  I had just changed `getLFOFrequency()` to return a float.  
+**But why did I not get a warning for assigning float to int?**  
+  
 Well I don't know WHY, but atleast everyone else is in the same boat:  <https://stackoverflow.com/questions/24915712/assigning-float-into-int-variable-causes-no-warning>.  
   
 So the answer is **you should use `-Wconversion`**.  What comes next is SHOCKING!  
   
 (not really, I just added suspense)  
   
-<br><br>
-# These are the warnings that came up when I enabled -Wconversion
+<br>
 
-```
-:::c++
+## These are the warnings that came up when I enabled -Wconversion
+We're only interested in the warnings here.
+
+```c++
   // USING THE DAFX Formula
     float thresh = clipping_percent * 32768.0;     //WARNING
     for(uint32_t i=0; i<num_samples; i++){
@@ -65,6 +68,9 @@ Floating point literals are `doubles`, and to make them floats you can say for e
 But then I realized something:  I'm using a Cortex M7 with a double precision floating point unit.  That means I can use doubles!  
 Continuing on, it turns out, that my sample buffers which were `float`s, can now be doubles also.  In fact, I **should** use either exclusively doubles or exclusively floats because converting between them requires a conversion instruction.  
   
+> Converting float <--> double requires a CPU instruction
+> (atleast on ARM Cortex M's)  
+> So use one or the other, float or double.
 
 I had originally made up a `typedef float sample_t` because I wasn't sure if I wanted to do floating or fixed point.  I went with floating point and now
 I'm really glad I did the typedef because now I can just change it to `typedef double sample_t` and that changes in hundreds of places.
@@ -77,18 +83,20 @@ I'm really glad I did the typedef because now I can just change it to `typedef d
 So changing `float` to `double` removes the `-Wconversion` warnings, but what if I actually did want to run this code using floats, perhaps on a Cortex-M4 with a single precision FPU?  The below uses a bunch of constants and all of them would have to be changed to float literals.  Not only to avoid the `-Wconversion` warning but actually to avoid overhead converting between `double` and `float`.  Does that mean I have to make all the literals float literals __everywhere__?  There are lots of them, plus it's annoying to see the `f`.  
 You know what, while I'm at it, let me add another requirement.  I want all those constants to be evalutated at compile time.  
 
-```
-:::c++
+```c++
+// Single precision FPU wants float types eg. when assigning to variables.
+// but the literals here are doubles.
   void setMIDIParameter(int id, int value){
     float delayNumSamples_float = ((float)value/128.0) * 100.0 * (1.0/1000.0) * (48000.0);
 ```  
   
-To summarize:  No warnings when used with either float or double, No float to double conversion (see the blog post), all the constants evaluated at compile time.
+To summarize:  To compile the above with no warnings for either float or double,  no float to double conversion (see the blog post), all the constants evaluated at compile time.
 
-```
-:::c++
+```c++
 typedef float sample_t;
-int delayNumSamples(int value){
+
+void setMIDIParameter(BlockParamIdentifier_t id, int value){
+    (void)id;
     #define MAX_DELAY_MILLIS 100.0
     #define MILLIS_TO_SECONDS (1.0/1000.0)
     #define SAMPLES_PER_SECOND 48000.0
@@ -96,12 +104,12 @@ int delayNumSamples(int value){
     const sample_t VALUE_TO_SAMPLES = (MAX_DELAY_MILLIS * MILLIS_TO_SECONDS * SAMPLES_PER_SECOND / MAX_INPUT_VALUE);
 
     sample_t delayNumSamples_float = (sample_t)value * VALUE_TO_SAMPLES;
-    return (int)delayNumSamples_float;
-}
+    delayNumSamples =  (int)delayNumSamples_float;
+
 ```
 
-That is what I came up with, resulting in 
-```
+That is what I came up with, resulting in the following.  Sorry the name of the function is different here.
+```asm
 delayNumSamples(int):
         vmov    s15, r0 @ int
         vldr.64 d6, .L3
@@ -115,7 +123,7 @@ delayNumSamples(int):
         .word   1078116352
 ```
 For double, and,  
-``` 
+``` asm
 delayNumSamples(int):
         vmov    s15, r0 @ int
         vldr.32 s14, .L3
@@ -134,14 +142,13 @@ Interestingly I don't have to make the literals `float`'s.  If I assign to a con
   
 And, no compiler warning.  
 All of this goes to show that...  
-# Compiler warnings are super important
-I avoided a potential bug, made my code more portable, and made it a lot more efficient, learned something about const, looked at some assembly, all as a result of satisfying `-Wconversion`.  
+## Compiler warnings are super important
+I avoided a potential bug, made my code more portable, and made it a lot more efficient, learned something about const, looked at some assembly, all as a result of satisfying `-Wconversion`.  That's a win for me.  
   
   
   
 Here's another one
-```
-:::c++
+```c++
 typedef double sample_t;
 #include <stdint.h>
 //globals for demo purposes
@@ -157,13 +164,13 @@ void process(void){
         pointless = interpolatedDelayNumSamples;  //to prevent optimization
 }
 ```
-Remember from school, the slope of a line is dy/dx.  We only have integers.  
+Remember from school, the slope of a line is dy/dx.  We want the slope but only have integers.  
 That is an ugly number of casts.  
 i is cast to float because of : `warning: conversion from 'uint32_t' {aka 'long unsigned int'} to 'float' may change value`  
 `i*slope` is cast back to int because of: `warning: conversion from 'float' to 'int' may change value [-Wfloat-conversion]`  
   
 It satisfies the warnings but look at the assembly:  
-```
+```asm
 process():
         ldr     r1, .L3
         ldr     r0, .L3+4
@@ -201,20 +208,20 @@ pointless:
 So, it looks ugly and the ugliness itself reveals a performance hit.  
 
 
-<br><br>
-# Another one.  Short ints can easily be overflowed
-```
-:::c++
+<br>
+
+## Another one.  Short ints can easily be overflowed
+
+```c++
       int sawToothValue = (-127) + (127*ticks*2/T);
       currentLFOValue = abs(sawToothValue);
       midiMessage.value = currentLFOValue;  //warning: conversion to ‘uint8_t {aka unsigned char}’ from ‘int’ may alter its value [-Wconversion]
 ```
-The thing to note here is that the value inside of a MIDI message is a 8 bit value.  But `currentLFOValue` is an `int`.  It's extremely easy to overflow a `uint8_t` when you're doing calculations with `int`.  
+The thing to note here is that `midiMessage.value` is a 8 bit value.  But `currentLFOValue` is an `int`.  It's extremely easy to overflow a `uint8_t` when you're doing calculations with `int`.  
 My first reaction is I like putting the explicit cast from int to uint8_t, rather than changing the type of `currentLFOValue` to uint8_t.  It's more explicit,
 at the place of assignment, where it could go wrong.
   
-```
-:::c++
+```c++
       int sawToothValue = (-127) + (127*ticks*2/T);
       currentLFOValue = abs(sawToothValue);
       midiMessage.value = (uint8_t) currentLFOValue;
@@ -222,9 +229,8 @@ at the place of assignment, where it could go wrong.
    
   
 <br><br>
-# Not even the seemingly trivial are excepted.  
-```
-:::c++
+## Not even the seemingly trivial are excepted.  
+```c++
     float lfoFreqHz;
 
 ...
@@ -235,8 +241,7 @@ at the place of assignment, where it could go wrong.
 The literal `10.0` is a double.  Same problem as before.  Do I make it `10.0f`, make `lfoFreqHz` a `double`, or what?  
 Again I like changing `float` to `sample_t`, and making the literal `10.0` a `const`.  It should have a name anyway, I was just being lazy and heuristically picked a number.
   
-```
-:::c++
+```c++
   typedef double sample_t;
 
   sample_t lfoFreqHz;
