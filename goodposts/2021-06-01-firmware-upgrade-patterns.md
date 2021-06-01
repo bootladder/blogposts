@@ -109,6 +109,19 @@ In order to do this you need some stuff, probably out of scope for your Firmware
 If you're at the point where you can trigger automated regression tests with a git push, 
 you've made it pretty far and re-wrapping that into a "OTA" firwmare update system for use in production
 field updates should be much more straight forward than doing it all from scratch.
+
+
+## Conclusion:  You can do it, you should do it, but it is not easy.
+
+* Start as early as possible
+* Assume you will have an "OTA" feature even if you don't
+* Integrate your "OTA" into your development and CI process
+* Run automated regression tests so you have a reason to use your "OTA"
+* The more you use your "OTA" the more testing you are doing on it
+* Get multiple people involved, don't expect a single Firmware Engineer to take care of everything
+* The cloud-to-gateway part is as important as the "over the air" part
+* Try to do more flashing via your "OTA" and CI/CD, and less using JTAG
+
   
 # Best of luck!
 
