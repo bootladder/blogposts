@@ -10,9 +10,9 @@ categories:
 
 ## There are many ways to do it
   
-I have created many different variants of many different products.  
-What is a variant?  The definition is not strict here but we are talking about the Firmware specifically being a variant.
-The difference between 2 FW images could be as simple as a single bit flag being a different value.  
+I have created many different variants of many different products.
+What is a variant?  The definition is not strict here but we are talking about the Firmware specifically being a variant.  
+The difference between 2 FW images could be as simple as a single bit flag being a different value.
 Or it could be a completely different application running a common low layer stack.
 Or a completely different stack running a common application.
 Or a test program, or a debug program.  
@@ -25,7 +25,7 @@ What are all the possible ways you can write and generate firmware variants?
 They range from terrible ideas to usable ideas and there is no single answer and often it is a composition of many ideas.
   
 The stupidest thing you could do is just change source code and rebuild.  This is probably the only thing
-you can think of before you learn to use the tools that allow you to do things other than this.  
+you can think of before you learn to use the tools that allow you to do things other than this.
 So I don't even consider this as an option.  
   
 ### Here are some techniques that can be used to create product variants

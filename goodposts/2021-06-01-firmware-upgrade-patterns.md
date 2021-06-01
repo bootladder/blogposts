@@ -12,14 +12,14 @@ categories:
 
 In this post I will discuss the following topics:  
 
-* Why is OTA a missued word.  Firmware upgrade is fine.
-* What are the major pieces of a FW upgrade system?
+* Why is OTA a misued word.  Firmware upgrade is fine.
+* What are the major components of a FW upgrade system?
 * What are the challenges and risks in developing and/or using a FW upgrade system?
 * How can you mitigate risk and make compromises?
 
 ### First, are you Agile?  Do you even have a Firmware Upgrade System?
 
-If you're confident or ignorant enough to call your shop Agile, you'd better
+If you're confident or ignorant enough to call your firmware development shop Agile, you'd better
 have a firwmare upgrade system.  Even better, you should have a **fully automated** system.  
 If you don't, how can you do sprints, demos, thin slices of end-to-end functionality, CI/CD, 
 automated regression tests, etc?  
@@ -36,7 +36,7 @@ It's OK to accept reality!
 ### OTA is a marketing buzzword and only a small component
 
 You have a device that is remotely located, and wireless.  It needs to be able to upgrade itself with a new firmware image.
-The image needs to come from somewhere, wirelessly of course.  This is the OTA part.  **We're done right?**  
+The image needs to come from somewhere, wirelessly of course.  This is the OTA part.  **We're done right?  Wrong!**  
 * The image needs to be identified as the right one for the target, 
 * The target needs to be identified as the destination of the image transfer.
     This is generally the Internet going to an Internet connected device.  ie.  "Cloud to IoT Gateway".
@@ -95,7 +95,7 @@ So you might as well make them as close together ie. reusable as possible.
 In order to do this you need some stuff, probably out of scope for your Firmware Engineer, eg. UI widgets, backend code.  
 
 * Storage and indexing of images:  web server with consistent URL and file naming convention
-* Tool removal.  You can't use JTAG adapters because they're too expensive.
+* Tool removal.  You can't use JTAG adapters because they're too expensive.  It's more like 1 per developer, not 1 per target.
   Remove the tool and solve the resulting problems.
 * Automation pipeline.  Jenkins or whatever.  Reduce friction in the long cycles.
 
