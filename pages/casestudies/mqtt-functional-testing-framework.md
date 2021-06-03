@@ -81,7 +81,7 @@ The number of bugs caught is hard to measure but anecdotally I was told that eve
 developer had caught multiple bugs with this system, saving a huge amount of time and stress.  
 
 
-Also there were many intangible results which I enjoy just as much.  
+Also there were many intangible results which are enjoyable for everyone  
 
 * Teach developers about ops, testing
 * Teach ops people about testing
@@ -101,36 +101,3 @@ So, trust your intuition so you can read more stuff and take in more opinions bu
 ### Credits and Thank you's
 
 Thanks to the people who used the framework.
-  
-  
-# SCRAP
-For me there was one more thing, learning about what testing really is.  
-A lot of people state opinions as ultimatums and present it as advice.  
-This system actually broke a lot of "rules" and I am proud to say it worked out just fine 
-and don't think I would have done it any other way.  
-
-
-
-
-At the core was a set of libraries to control the IPC communication interface, and make assertions about what happened
-across that interface.  Small and highly cohesive was the design goal here, which leads to modularity so that any automation framework could use them.  
-The automation I chose to use was Cucumber JVM.  So there was a small thin Cucumber layer ontop of the portable core layer.  
-Small but critical.  The thinnesss comes from essentially being a wrapper driving the core layer.  But the critical part was to initialize the Cucumber framework with configuration and hook it up to dependency injection, in this case I used container.  
-
-Then the Cucumber layer was made automatable by making it drivable by command line and configurable via config files and command line arguments.  
-This allowed a cloud-based pipeline to be in control of the tests, such as Jenkins or Atlassian.  
-I set up and maintained the entire pipeline ops for this system.
-  
-Once I had pipeline control of all execution and configuration, I was then able to do the final integration of
-triggering tests and delivering reports, thus wrapping up the complete system to be delievered and used by
-the Engineering department.  
-
-
-As an employee of XYZ Technologies, Inc, I developed a test automation framework for testing an embedded Linux device.  
-After leaving XYZ, I released the framework and continue to support it.  
-
-  
-We had a QA department supporting the Engineering department.  
-QA did manual and end-to-end testing, Engineering did unit testing.  
-  
-But on a Linux system there is system level testing for the system itself as well as the greater system it is a part of.  
