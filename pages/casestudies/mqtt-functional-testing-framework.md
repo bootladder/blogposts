@@ -12,7 +12,7 @@ Most importantly, they wanted the test coverage from the beginning, to go alongs
   
   
 I quickly created a test automation framework and pipelining, got the development team on-board,
-and within a few weeks the testing was lock-step with development.  The client got excellent results
+and within a few weeks the testing was lock-step with development.  The client got valuable feedback 
 from the testing all the way to the end of the project.  
 
   
