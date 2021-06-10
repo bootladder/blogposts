@@ -4,11 +4,11 @@
 
 XYZ, formerly ZZZ, manufactures residential security and home automation systems.
 They developed a communication device to connect legacy security panels to the Internet.
-The legacy and retrofitting nature of the product meant that a lot of work was re-cycled from previous products,
-which shortened the schedule dramatically.  
+The legacy and retrofitting nature of the product meant that a lot of work was recycled from previous products,
+which shortened the project timeline dramatically.  
   
 The client wanted maximum test coverage, only covering the areas that were new development.
-Most importantly, they wanted the test coverage from the beginning, to go alongside with development.  
+Most importantly, they wanted the test coverage available from the beginning, to go alongside with development.  
   
   
 I quickly created a test automation framework and pipelining, got the development team on-board,
@@ -22,7 +22,7 @@ Testing IoT products is difficult because the end-to-end paths are longer.
 A typical test case involves hardware interaction, wireless communication,
 cloud interfacing, backend and multiple user interfaces.
 Because there are so many points of failure, engineering teams want a way to test their
-subsystems without running into failures out of scope.  
+subsystems without running into failures out of their scope.  
 
 Specifically on Embedded Linux systems, there is a greater challenge because within a single device,
 the line separating end-to-end testing and unit testing is wide and technically advanced,
@@ -38,15 +38,20 @@ which allowed for high test coverage, ease of use, consistent execution and usef
 
 ### The Challenge:  Do the important work, make it easy, don't repeat existing work
 
+The big question was who would do the testing, QA or Engineering?  At first glance it is out of scope for both.  
+
 The developers had excellent coverage with unit tests so we did not want to double-cover any of that.
 The part not being covered was the inter-process communication (IPC) between processes running on the Linux system.
-The IPC mechanism being used happened to be MQTT but this idea applies to any other IPC mechanism.  
+The IPC mechanism being used happened to be MQTT but this idea applies to any other IPC mechanism such as sockets, message queues, or even a REST API.  
 
 System, ie. end-to-end testing is normally delegated to QA testers.  But in this case of an Embedded Linux device,
 system level is not end-to-end.  ie. there are a lot of technical implementation details, as opposed to business domain details.  However, developers aren't as concerned with the system level as they are with
 the process level that they develop and unit test at.  
 
 ### The Solution:  Test at the boundaries, let the developers write the tests, do not get in the way
+  
+The solution was to let the developers maintain the tests, but to make it as easy as possible for them.
+This meant: zero maintenance of the framework itself, extremely easy to use, always works as expected.  
   
 Thinking of a Linux system as a collection of inter-communicating processes, we chose to 
 create a test solution to cover the IPC interfaces only.  This allowed the test framework itself to be
@@ -77,14 +82,24 @@ Test coverage was the critical result.
 
 
 Because the test suites would run after every git commit, it was very easy to catch bugs.
+There was a detailed reporting system to describe exactly what the tests were doing, but
+it turned out most bugs were caught immediately because the tests ran so often.
+Developers could make small commits and see the test results quickly, so most of the time
+a pass/fail indication was as useful as reading the detailed report.  
+
 The number of bugs caught is hard to measure but anecdotally I was told that every 
 developer had caught multiple bugs with this system, saving a huge amount of time and stress.  
 
 
-Also there were many intangible results which are enjoyable for everyone  
+Also there were many intangible results
 
+* General purpose and reusable
+* No manual testing required
+* Developers write the tests for their own code
+* Minimal hardware setup required for running automated tests
+* Tests maintained in-sync with development
 * Teach developers about ops, testing
-* Teach ops people about testing
+* Upskilling manual testers to think about automation without coding
 * Write once, use forever
 * Breaking the paradigm and still being successful
 
@@ -100,4 +115,6 @@ So, trust your intuition so you can read more stuff and take in more opinions bu
   
 ### Credits and Thank you's
 
-Thanks to the people who used the framework.
+Thanks to the engineering team lead who had the original idea but trusted me to try a unique solution.  
+Thanks to the developers and testers, whose collaboration resulted in the solution, and whose adoption of the solution
+made it into a great success.
