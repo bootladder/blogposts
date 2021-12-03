@@ -10,7 +10,7 @@ categories:
   - "Ops"
 ---
 
-In this post I will discuss the following topics:  
+In this post I will be discussing the following topics:  
 
 * Why is OTA a misued word.  Firmware upgrade is fine.
 * What are the major components of a FW upgrade system?
