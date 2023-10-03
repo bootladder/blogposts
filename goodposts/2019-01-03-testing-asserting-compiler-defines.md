@@ -7,7 +7,6 @@ categories:
   - Embedded
   - C/C++
 ---
-# Testing: Asserting Compiler Defines
 I ported a build from make to CMake, I nearly missed a piece though just before shipping.  
 The **version number** did not "get baked into the build".
 The version number was stored in the build system and got put into a compiler `#define`d symbol.  
